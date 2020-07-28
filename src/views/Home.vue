@@ -7,8 +7,8 @@
         <h1>TG-UI</h1>
         <h2>基于Vue3和 TypeScript的UI框架</h2>
         <div class="links">
-          <router-link to="/doc">查看文档</router-link>
           <a href="http://github.com">GitHub</a>
+          <router-link to="/doc">开始</router-link>
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
 <script>
 import topNav from "../components/topNav.vue";
 export default {
-  components: { topNav }
+  components: { topNav },
 };
 </script>
 <style lang="scss" scoped>
@@ -33,7 +33,7 @@ export default {
     padding: 100px 0;
     background: lightgreen;
   }
-  
+
   > .content {
     display: flex;
     flex-grow: 1;
