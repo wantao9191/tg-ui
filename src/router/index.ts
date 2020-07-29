@@ -11,11 +11,11 @@ const router = createRouter({
         { path: '/', component: Home },
         {
             path: '/doc', component: doc,
-            // children: [
-            //     { path: 'switch', component: switchDemo },
-            //     { path: 'icon', component: iconDemo },
-            //     { path: 'button', component: buttonDemo }
-            // ]
+            children: [
+                { path: 'switch', component: switchDemo },
+                { path: 'icon', component: iconDemo },
+                { path: 'button', component: buttonDemo }
+            ]
         }
     ]
 })

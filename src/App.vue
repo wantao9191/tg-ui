@@ -1,19 +1,15 @@
 <template>
   <router-view></router-view>
 </template>
-<script>
+<script lang='ts'>
+import { ref } from 'vue';
 export default {
   name: "App",
+  setup(){
+    const menuVisible = ref()
+  }
 };
 </script>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-ul,
-ol {
-  list-style: none;
-}
+
 </style>
