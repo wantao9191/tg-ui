@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from '../views/Home.vue'
-import doc from '../views/Doc.vue'
-import iconDemo from '../components/iconDemo.vue'
-import switchDemo from '../components/switchDemo.vue'
-import buttonDemo from '../components/buttonDemo.vue'
+import Home from './views/Home.vue'
+import doc from './views/Doc.vue'
+import iconDemo from './components/iconDemo.vue'
+import switchDemo from './components/switchDemo.vue'
+import buttonDemo from './components/buttonDemo.vue'
 const routerHistory = createWebHistory()
 const router = createRouter({
     history: routerHistory,
