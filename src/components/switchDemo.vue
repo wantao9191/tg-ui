@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Switch :value='checked' @input="checked = $event" />
+    <Switch v-model:value="checked" />
   </div>
 </template>
 <script lang="ts">
 import Switch from "../lib/switch.vue";
-import { ref } from 'vue';
+import { ref } from "vue";
 export default {
   components: { Switch },
-  setup(){
-      const checked = ref(false)
-      return {checked}
-  }
+  setup() {
+    const checked = ref(false);
+    return { checked };
+  },
 };
 </script>
