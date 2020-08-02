@@ -5,7 +5,7 @@
       <aside v-if="menuVisible">
         <h2>组件</h2>
         <ol>
-          <li v-for="(m,i) in menuList" :key="i">
+          <li v-for="(m,i) in menuList" :key="i" :class="{selected:$route.path == m.path}">
             <router-link :to="m.path">{{m.title}}</router-link>
           </li>
         </ol>
@@ -35,6 +35,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$primary: #1890ff;
 .layout {
   display: flex;
   flex-direction: column;
@@ -45,8 +46,7 @@ export default {
   > .content {
     flex-grow: 1;
     padding-top: 60px;
-    padding-left: 156px;
-
+    padding-left: 256px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -67,24 +67,35 @@ export default {
   }
 }
 aside {
-  width: 150px;
-  padding: 16px;
+  width: 240px;
+  padding: 16px 0;
   position: fixed;
   top: 0;
   left: 0;
   padding-top: 70px;
   height: 100%;
-  border-right: 1px solid #ddd;
+  box-shadow: 0 2px 8px #ddd;
   > h2 {
     margin-bottom: 16px;
+    padding-left: 40px;
   }
   > ol {
     > li {
-      padding: 8px 0;
+      padding: 8px 0 8px  40px;
       font-size: 14px;
       color: #444;
+      >a {
+        display: block;
+      }
+      &.selected {
+        background: #e6f7ff;
+        border-right: 3px solid $primary;
+      }
+      &:hover {
+        color: $primary;
+      }
       > .router-link-active {
-        color: #1890ff;
+        color: $primary;
       }
     }
   }
