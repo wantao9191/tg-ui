@@ -6,7 +6,7 @@
         <h2>组件</h2>
         <ol>
           <li v-for="(m,i) in menuList" :key="i">
-            <router-link :to="m.path" >{{m.title}}</router-link>
+            <router-link :to="m.path">{{m.title}}</router-link>
           </li>
         </ol>
       </aside>
@@ -24,12 +24,13 @@ export default {
   setup() {
     const menuVisible = inject<Ref<boolean>>("menuVisible");
     const menuList = ref([
-      {title:"Switch 开关",path:'/doc/switch'},
-      {title:"Button 组件",path:'/doc/button'},
-      {title:"Dialog 对话框",path:'/doc/dialog'},
-      {title:"Tabs 标签",path:'/doc/tabs'},
+      { title: "Switch 开关", path: "/doc/switch" },
+      { title: "Button 组件", path: "/doc/button" },
+      { title: "Icon 图标", path: "/doc/icon" },
+      { title: "Dialog 对话框", path: "/doc/dialog" },
+      { title: "Tabs 标签", path: "/doc/tabs" },
     ]);
-    return { menuVisible ,menuList};
+    return { menuVisible, menuList };
   },
 };
 </script>
@@ -75,14 +76,14 @@ aside {
   height: 100%;
   border-right: 1px solid #ddd;
   > h2 {
-    margin-bottom: 4px;
+    margin-bottom: 16px;
   }
   > ol {
     > li {
-      padding: 4px 0;
+      padding: 8px 0;
       font-size: 14px;
       color: #444;
-      >.router-link-active {
+      > .router-link-active {
         color: #1890ff;
       }
     }

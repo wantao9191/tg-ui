@@ -4,6 +4,8 @@ import doc from './views/Doc.vue'
 import iconDemo from './components/iconDemo.vue'
 import switchDemo from './components/switchDemo.vue'
 import buttonDemo from './components/buttonDemo.vue'
+import tabsDemo from './components/tabsDemo.vue'
+import dialogDemo from './components/dialogDemo.vue'
 import docDemo from './components/docDemo.vue'
 const routerHistory = createWebHistory()
 const router = createRouter({
@@ -16,7 +18,9 @@ const router = createRouter({
                 {path:'',component:docDemo},
                 { path: 'switch', component: switchDemo },
                 { path: 'icon', component: iconDemo },
-                { path: 'button', component: buttonDemo }
+                { path: 'button', component: buttonDemo },
+                { path: 'tabs', component: tabsDemo },
+                { path: 'dialog', component: dialogDemo }
             ]
         }
     ]
