@@ -81,10 +81,10 @@ aside {
   }
   > ol {
     > li {
-      padding: 8px 0 8px  40px;
+      padding: 8px 0 8px 40px;
       font-size: 14px;
       color: #444;
-      >a {
+      > a {
         display: block;
       }
       &.selected {

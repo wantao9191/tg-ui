@@ -20,6 +20,7 @@ $h: 22px;
 $h2: $h - 4px;
 $primary: #1890ff;
 $danger: #f5222d;
+$success:#67C23A;
 button {
   height: $h;
   width: $h * 2;
@@ -39,6 +40,7 @@ button {
     transition: all 250ms;
   }
   &.checked {
+    background: $primary;
     > span {
       left: calc(100% - #{$h} - 2px);
     }
@@ -48,6 +50,9 @@ button {
   }
   &.checked.danger {
     background: $danger;
+  }
+  &.checked.success {
+    background: $success;
   }
   &:active {
     > span {
