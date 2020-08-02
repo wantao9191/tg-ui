@@ -1,6 +1,8 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <router-link to="/">LOGO</router-link>
+    </div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -9,15 +11,15 @@
   </div>
 </template>
 <script lang="ts">
-import { inject, Ref } from 'vue';
+import { inject, Ref } from "vue";
 export default {
-  setup(){
-    const menuVisible = inject<Ref<boolean>>('menuVisible')
-    const toggleMenu = ()=>{
-      menuVisible.value = !menuVisible.value
-    }
-    return {toggleMenu}
-  }
+  setup() {
+    const menuVisible = inject<Ref<boolean>>("menuVisible");
+    const toggleMenu = () => {
+      menuVisible.value = !menuVisible.value;
+    };
+    return { toggleMenu };
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -31,8 +33,8 @@ export default {
   z-index: 10;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #ddd;
   background: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
   > .logo {
     max-width: 6em;
     margin-right: auto;

@@ -3,19 +3,10 @@
     <top-nav class="nav" />
     <div class="content">
       <aside v-if="menuVisible">
-        <h2>组件列表</h2>
+        <h2>组件</h2>
         <ol>
-          <li>
-            <router-link to="/doc/switch">Switch 组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/button">Button 组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/dialog">Dialog 组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/tabs">Tabs 组件</router-link>
+          <li v-for="(m,i) in menuList" :key="i">
+            <router-link :to="m.path" >{{m.title}}</router-link>
           </li>
         </ol>
       </aside>
@@ -27,13 +18,19 @@
 </template>
 <script lang='ts'>
 import topNav from "../components/topNav.vue";
-import { inject, Ref } from 'vue';
+import { inject, Ref, ref } from "vue";
 export default {
-  components: { topNav},
-  setup(){
-    const menuVisible = inject<Ref<boolean>>('menuVisible')
-    return {menuVisible}
-  }
+  components: { topNav },
+  setup() {
+    const menuVisible = inject<Ref<boolean>>("menuVisible");
+    const menuList = ref([
+      {title:"Switch 开关",path:'/doc/switch'},
+      {title:"Button 组件",path:'/doc/button'},
+      {title:"Dialog 对话框",path:'/doc/dialog'},
+      {title:"Tabs 标签",path:'/doc/tabs'},
+    ]);
+    return { menuVisible ,menuList};
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -48,8 +45,9 @@ export default {
     flex-grow: 1;
     padding-top: 60px;
     padding-left: 156px;
+
     @media (max-width: 500px) {
-      padding-left: 0; 
+      padding-left: 0;
     }
   }
 }
@@ -57,6 +55,10 @@ export default {
   display: flex;
   > aside {
     flex-shrink: 0;
+    > h2 {
+      font-size: 16px;
+      font-weight: 700;
+    }
   }
   > main {
     flex-grow: 1;
@@ -78,6 +80,11 @@ aside {
   > ol {
     > li {
       padding: 4px 0;
+      font-size: 14px;
+      color: #444;
+      >.router-link-active {
+        color: #1890ff;
+      }
     }
   }
 }
