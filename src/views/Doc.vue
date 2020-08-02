@@ -61,11 +61,9 @@ export default {
   > main {
     flex-grow: 1;
     padding: 16px;
-    background: lightgreen;
   }
 }
 aside {
-  background: lightblue;
   width: 150px;
   padding: 16px;
   position: fixed;
@@ -73,6 +71,7 @@ aside {
   left: 0;
   padding-top: 70px;
   height: 100%;
+  border-right: 1px solid #ddd;
   > h2 {
     margin-bottom: 4px;
   }
