@@ -41,6 +41,36 @@
         <a href="javaScript:;" @click="toggleDemoCode1">{{switchData1.txt}}</a>
       </div>
     </div>
+    <!-- 文字描述 -->
+    <div class="demo-block">
+      <div class="demo-component">
+        <tg-switch v-model:value="switchData5.checked1" active-text="开" inactive-text="关" />
+      </div>
+      <div class="demo-desc">
+        <span class="desc-title">文字描述</span>
+        <div class="desc-text">开关带有文字描述</div>
+      </div>
+      <div class="demo-code" v-show="switchData5.visible">
+        <code class="code-bg">
+          <div class="code-text">
+            使用
+            <code>active-text</code>
+            属性与
+            <code>inactive-text</code>
+            属性来设置开关的文字描述。
+          </div>
+          <span class="code-tag">&lt;temlate&gt;</span>
+          <span
+            class="code-tag code-script-2"
+          >&lt;tg-switch v--model:value:"checked" active-text="开" inactive-text="关" /&gt;</span>
+          <span class="code-tag">&lt;/temlate&gt;</span>
+        </code>
+      </div>
+      <div class="demo-btns">
+        <a href="javaScript:;">copy</a>
+        <a href="javaScript:;" @click="toggleDemoCode5">{{switchData5.txt}}</a>
+      </div>
+    </div>
     <!-- 其他颜色 -->
     <div class="demo-block">
       <div class="demo-component">
@@ -133,7 +163,7 @@
       </div>
       <div class="demo-desc">
         <span class="desc-title">两种尺寸</span>
-        <div class="desc-text">switch包含两种尺寸</div>
+        <div class="desc-text">开关包含两种尺寸</div>
       </div>
       <div class="demo-code" v-show="switchData4.visible">
         <code class="code-bg">
@@ -189,6 +219,11 @@ export default {
       txt: "显示",
       visible: false,
     });
+    const switchData5 = reactive({
+      checked1: true,
+      txt: "显示",
+      visible: false,
+    });
     const toggleDemoCode1 = () => {
       switchData1.visible = !switchData1.visible;
       switchData1.txt = switchData1.visible ? "隐藏" : "显示";
@@ -205,15 +240,21 @@ export default {
       switchData4.visible = !switchData4.visible;
       switchData4.txt = switchData4.visible ? "隐藏" : "显示";
     };
+    const toggleDemoCode5 = () => {
+      switchData5.visible = !switchData5.visible;
+      switchData5.txt = switchData5.visible ? "隐藏" : "显示";
+    };
     return {
       toggleDemoCode1,
       toggleDemoCode2,
       toggleDemoCode3,
       toggleDemoCode4,
+      toggleDemoCode5,
       switchData1,
       switchData2,
       switchData3,
       switchData4,
+      switchData5,
     };
   },
 };
