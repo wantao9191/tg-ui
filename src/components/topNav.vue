@@ -1,7 +1,10 @@
 <template>
   <div class="topnav">
     <div class="logo">
-      <router-link to="/">LOGO</router-link>
+      <router-link to="/">
+        <img src="../assets/logo.png" alt />
+        <span>TG-UI</span>
+      </router-link>
     </div>
     <ul class="menu">
       <li>菜单1</li>
@@ -38,6 +41,18 @@ export default {
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    > a {
+      > img {
+        width: 30px;
+        vertical-align: middle;
+      }
+      >span{
+        vertical-align: middle;
+        margin-left: 12px;
+        color: #007acc;
+        font-weight: 700;
+      }
+    }
   }
   > .menu {
     display: flex;
