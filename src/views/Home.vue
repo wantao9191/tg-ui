@@ -35,6 +35,11 @@
         </li>
       </ul>
     </div>
+    <div class="thanks">
+      <h3>特别感谢</h3>
+      <span>Li Yang</span>
+      <p>设计的 Logo！</p>
+    </div>
   </div>
 </template>
 <script>
@@ -81,6 +86,22 @@ export default {
     }
   }
 }
+.thanks {
+  text-align: center;
+  padding-bottom: 20px;
+  > span {
+    font-weight: 700;
+    padding: 4px 12px;
+    background: #007acc;
+    color: #fff;
+    display: inline-block;
+    border-radius: 6px;
+    margin: 12px;
+  }
+  > p {
+    font-size: 14px;
+  }
+}
 .cards {
   width: 50%;
   margin: 0 auto;
@@ -96,15 +117,35 @@ export default {
         color: #007acc;
         font-weight: 700;
       }
-      >.content {
+      > .content {
         padding: 20px;
         font-size: 14px;
         letter-spacing: 2px;
         line-height: 1.5;
       }
     }
-    >li:hover {
+    > li:hover {
       box-shadow: 0 2px 8px #999;
+    }
+  }
+}
+@media (max-width: 920px) {
+  .banner {
+    > .banner-top {
+      flex-direction: column;
+      text-align: center;
+      > .logo {
+        padding-right: 0;
+        margin-bottom: 20px;
+        > img {
+          width: 80px;
+        }
+      }
+    }
+  }
+  .cards {
+    >ul {
+      flex-direction: column;
     }
   }
 }
