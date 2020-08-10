@@ -8,18 +8,23 @@
 import { computed } from "vue";
 export default {
   props: {
-    theme: { type: String, default: "default" },
+    theme: { type: String, default: "button" },
     size: { type: String, default: "normal" },
-    type: { type: String, default: "primary" },
+    type: { type: String, default: "" },
     disabled: Boolean,
     loading: Boolean,
+    round: Boolean,
   },
   setup(props) {
-    const { theme, size, type } = props;
+    const { theme, size, type, round } = props;
     const classes = computed(() => {
-      return [`tg-theme-${theme}`, `tg-${size}-button`, `tg-${type}-button`];
+      return {
+        [`tg-theme-${theme}`]: theme,
+        [`tg-${size}-button`]: size,
+        [`tg-${type}-button`]: type,
+        'tg-round-button': round,
+      };
     });
-    console.log(classes);
     return { classes };
   },
 };
@@ -32,8 +37,10 @@ $blue: #40a9ff;
 $radius: 4px;
 $red: red;
 $grey: grey;
+$green: #83d944;
 .tg-button {
   box-sizing: border-box;
+  font-size: 14px;
   height: $h;
   padding: 0 12px;
   cursor: pointer;
@@ -49,6 +56,9 @@ $grey: grey;
   transition: background 250ms;
   & + & {
     margin-left: 8px;
+  }
+  &.tg-round-button {
+    border-radius: $h;
   }
   &:hover,
   &:focus {
@@ -110,6 +120,16 @@ $grey: grey;
         border-color: darken($red, 10%);
       }
     }
+    &.tg-success-button {
+      background: $green;
+      border-color: $green;
+      color: white;
+      &:hover,
+      &:focus {
+        background: darken($green, 10%);
+        border-color: darken($green, 10%);
+      }
+    }
   }
   &.tg-theme-link {
     &.tg-danger-button {
@@ -133,6 +153,13 @@ $grey: grey;
       &:hover,
       &:focus {
         color: darken($red, 10%);
+      }
+    }
+    &.tg-success-button {
+      color: $green;
+      &:hover,
+      &:focus {
+        color: darken($green, 10%);
       }
     }
   }
