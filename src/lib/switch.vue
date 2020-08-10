@@ -1,11 +1,11 @@
 <template>
   <span
-    :class="[type,size,{checked:value}]"
+    :class="[type,size,{'tg-checked':value}]"
     class="active-text switch-text"
     style="margin-right:8px"
     v-if="activeText"
   >{{activeText}}</span>
-  <button @click="toggle" :class="[{checked:value},type,btnClass,size]">
+  <button class="tg-switch" @click="toggle" :class="[{'tg-checked':value},type,btnClass,size]">
     <span></span>
   </button>
   <span
@@ -36,7 +36,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 22px;
 $h2: $h - 4px;
 $hs: 16px;
@@ -45,7 +45,7 @@ $primary: #1890ff;
 $danger: #f5222d;
 $success: #67c23a;
 .active-text {
-  &.checked {
+  &.tg-checked {
     color: $primary;
     &.danger {
       color: $danger;
@@ -62,7 +62,7 @@ $success: #67c23a;
     font-size: 12px;
   }
 }
-button {
+.tg-switch {
   height: $h;
   width: $h * 2;
   border: none;
@@ -81,19 +81,19 @@ button {
     border-radius: $h2/2;
     transition: all 250ms;
   }
-  &.checked {
+  &.tg-checked {
     background: $primary;
     > span {
       left: calc(100% - #{$h} + 2px);
     }
   }
-  &.checked.primary {
+  &.tg-checked.primary {
     background: $primary;
   }
-  &.checked.danger {
+  &.tg-checked.danger {
     background: $danger;
   }
-  &.checked.success {
+  &.tg-checked.success {
     background: $success;
   }
   &.disabled {
@@ -104,7 +104,7 @@ button {
       width: $h2 + 4px;
     }
   }
-  &.checked:active {
+  &.tg-checked:active {
     &.normal > span {
       margin-left: -4px;
     }
@@ -123,7 +123,7 @@ button {
     top: 1.2px;
     left: 1.2px;
   }
-  &.checked {
+  &.tg-checked {
     > span {
       left: calc(100% - #{$hs});
     }
@@ -133,7 +133,7 @@ button {
       width: $h2s + 2px;
     }
   }
-  &.checked:active {
+  &.tg-checked:active {
     &.normal > span {
       margin-left: -2px;
     }
