@@ -1,14 +1,27 @@
 <template>
-  <button class="tg-button" :class="`tg-theme-${theme}`">
+  <button class="tg-button" :class="classes">
     <slot />
   </button>
 </template>
 <script lang='ts'>
+import { computed } from "vue";
 export default {
   props: {
     theme: { type: String, default: "default" },
+    size: { type: String, default: "normal" },
+    type: { type: String, default: "primary" },
   },
-  setup() {},
+  setup(props) {
+    const { theme, size, type } = props;
+    const classes = computed(() => {
+      return {
+        [`tg-theme-${theme}`]: theme,
+        [`tg-size-${size}`]: size,
+        [`tg-size-${type}`]: type,
+      };
+    });
+    return { classes };
+  },
 };
 </script>
 <style lang="scss">
@@ -44,6 +57,72 @@ $radius: 4px;
   }
   &::-moz-focus-inner {
     border: 0;
+  }
+  &.tg-theme-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,
+    &:focus {
+      color: lighten($blue, 10%);
+    }
+  }
+  &.tg-size-large {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+  &.tg-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
+  }
+  &.tg-theme-button {
+    &.tg-type-primay {
+      background: $blue;
+      color: white;
+      border-color: $blue;
+      &:hover,
+      &:focus {
+        background: darken($blue, 10%);
+        border-color: darken($blue, 10%);
+      }
+    }
+    &.tg-type-danger {
+      background: $red;
+      border-color: $red;
+      color: white;
+      &:hover,
+      &:focus {
+        background: darken($red, 10%);
+        border-color: darken($red, 10%);
+      }
+    }
+  }
+  &.tg-theme-link {
+    &.tg-type-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
+    }
+  }
+  &.tg-theme-text {
+    &.tg-type-primary {
+      color: $blue;
+      &:hover,
+      &:focus {
+        color: darken($blue, 10%);
+      }
+    }
+    &.tg-type-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
+    }
   }
 }
 </style>
