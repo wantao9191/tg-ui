@@ -1,5 +1,5 @@
 <template>
-  <button class="tg-button" :class="classes">
+  <button class="tg-button" :class="classes" :disabled="disabled">
     <slot />
   </button>
 </template>
@@ -10,16 +10,14 @@ export default {
     theme: { type: String, default: "default" },
     size: { type: String, default: "normal" },
     type: { type: String, default: "primary" },
+    disabled: Boolean,
   },
   setup(props) {
     const { theme, size, type } = props;
     const classes = computed(() => {
-      return {
-        [`tg-theme-${theme}`]: theme,
-        [`tg-size-${size}`]: size,
-        [`tg-size-${type}`]: type,
-      };
+      return [`tg-theme-${theme}`, `tg-${size}-button`, `tg-${type}-button`];
     });
+    console.log(classes);
     return { classes };
   },
 };
@@ -30,6 +28,8 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
+$red: red;
+$grey: grey;
 .tg-button {
   box-sizing: border-box;
   height: $h;
@@ -44,6 +44,7 @@ $radius: 4px;
   border: 1px solid $border-color;
   border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
+  transition: background 250ms;
   & + & {
     margin-left: 8px;
   }
@@ -67,18 +68,27 @@ $radius: 4px;
       color: lighten($blue, 10%);
     }
   }
-  &.tg-size-large {
+  &.tg-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,
+    &:focus {
+      background: darken(white, 5%);
+    }
+  }
+  &.tg-large-button {
     font-size: 24px;
     height: 48px;
     padding: 0 16px;
   }
-  &.tg-size-small {
+  &.tg-small-button {
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
   }
   &.tg-theme-button {
-    &.tg-type-primay {
+    &.tg-primary-button {
       background: $blue;
       color: white;
       border-color: $blue;
@@ -88,7 +98,7 @@ $radius: 4px;
         border-color: darken($blue, 10%);
       }
     }
-    &.tg-type-danger {
+    &.tg-danger-button {
       background: $red;
       border-color: $red;
       color: white;
@@ -100,7 +110,7 @@ $radius: 4px;
     }
   }
   &.tg-theme-link {
-    &.tg-type-danger {
+    &.tg-danger-button {
       color: $red;
       &:hover,
       &:focus {
@@ -109,14 +119,14 @@ $radius: 4px;
     }
   }
   &.tg-theme-text {
-    &.tg-type-primary {
+    &.tg-primary-button {
       color: $blue;
       &:hover,
       &:focus {
         color: darken($blue, 10%);
       }
     }
-    &.tg-type-danger {
+    &.tg-danger-button {
       color: $red;
       &:hover,
       &:focus {
@@ -124,5 +134,35 @@ $radius: 4px;
       }
     }
   }
+  &.tg-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+  &.tg-theme-link, &.tg-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+    }
+  }
+  > .tg-loadingIndicator{
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 8px; 
+    border-color: $blue $blue $blue transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: tg-spin 1s infinite linear;
+  }
+}
+@keyframes tg-spin {
+  0%{transform: rotate(0deg)} 
+  100%{transform: rotate(360deg)} 
 }
 </style>
