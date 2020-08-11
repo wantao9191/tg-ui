@@ -36,7 +36,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
-$grey: grey;
+$grey: #ddd;
 $green: #83d944;
 .tg-button {
   box-sizing: border-box;
@@ -54,6 +54,7 @@ $green: #83d944;
   border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
   transition: background 250ms;
+  vertical-align: bottom;
   & + & {
     margin-left: 8px;
   }
