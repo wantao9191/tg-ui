@@ -2,10 +2,18 @@
   <template v-if="visible">
     <div class="wt-dialog-overlay" @click="onClickOverlay"></div>
     <div class="wt-dialog-wrapper">
-      <div class="wt-dialog">
-        <header slot="header"></header>
-        <main>内容</main>
-        <footer>按钮</footer>
+      <div class="wt-dialog" :class="`wt-dialog-${center ? 'center' :'default'}`">
+        <header>
+          <div v-if="title">{{title}}</div>
+          <slot name="title" v-else />
+          <span class="wt-dialog-close" @click="close">X</span>
+        </header>
+        <main>
+          <slot />
+        </main>
+        <footer>
+          <slot name="footer"></slot>
+        </footer>
       </div>
     </div>
   </template>
@@ -17,6 +25,8 @@ export default {
   props: {
     visible: { type: Boolean, default: false },
     closeOnOverlay: { type: Boolean, default: true },
+    title: { type: String, default: "" },
+    center: { type: Boolean, default: false },
   },
   setup(props, context) {
     const close = () => {
@@ -56,12 +66,27 @@ export default {
       font-size: 18px;
       padding: 20px 20px 10px;
       font-weight: 400;
+      position: relative;
+      > .wt-dialog-close {
+        cursor: pointer;
+        font-weight: normal;
+        font-size: 14px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
     }
     > main {
       padding: 30px 20px;
     }
     > footer {
       padding: 10px 20px 20px;
+      text-align: right;
+    }
+    &.wt-dialog-center {
+        header,footer {
+            text-align: center;
+        }
     }
   }
 }
