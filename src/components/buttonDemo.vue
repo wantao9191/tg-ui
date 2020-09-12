@@ -288,7 +288,7 @@ export default {
       buttonData3,
       toggleDemoCode3,
       buttonData4,
-      toggleDemoCode4
+      toggleDemoCode4,
     };
   },
 };
