@@ -1,24 +1,24 @@
 <template>
   <template v-if="visible">
-    <div class="wt-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="wt-dialog-wrapper">
-      <div class="wt-dialog" :class="`wt-dialog-${center ? 'center' :'default'}`">
-        <header>
-          <div v-if="title">{{title}}</div>
-          <slot name="title" v-else />
-          <span class="wt-dialog-close" @click="close">X</span>
-        </header>
-        <main>
-          <slot />
-        </main>
-        <footer>
-          <slot name="footer"></slot>
-        </footer>
+    <Teleport to='body'>
+      <div class="wt-dialog-overlay" @click="onClickOverlay"></div>
+      <div class="wt-dialog-wrapper">
+        <div class="wt-dialog" :class="`wt-dialog-${center ? 'center' :'default'}`">
+          <header>
+            <div v-if="title">{{title}}</div>
+            <slot name="title" v-else />
+            <span class="wt-dialog-close" @click="close">X</span>
+          </header>
+          <main>
+            <slot />
+          </main>
+          <footer>
+            <slot name="footer"></slot>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
-</template>
-  
 </template>
 <script lang='ts'>
 export default {
@@ -27,6 +27,7 @@ export default {
     closeOnOverlay: { type: Boolean, default: true },
     title: { type: String, default: "" },
     center: { type: Boolean, default: false },
+    appendTo:{type:String,default:''}
   },
   setup(props, context) {
     const close = () => {
@@ -84,9 +85,10 @@ export default {
       text-align: right;
     }
     &.wt-dialog-center {
-        header,footer {
-            text-align: center;
-        }
+      header,
+      footer {
+        text-align: center;
+      }
     }
   }
 }
