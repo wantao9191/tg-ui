@@ -2,7 +2,7 @@
   <template v-if="visible">
     <Teleport to='body'>
       <div class="wt-dialog-overlay" @click="onClickOverlay"></div>
-      <div class="wt-dialog-wrapper">
+      <div class="wt-dialog-wrapper" :style="{width}">
         <div class="wt-dialog" :class="`wt-dialog-${center ? 'center' :'default'}`">
           <header>
             <div v-if="title">{{title}}</div>
@@ -27,7 +27,7 @@ export default {
     closeOnOverlay: { type: Boolean, default: true },
     title: { type: String, default: "" },
     center: { type: Boolean, default: false },
-    appendTo:{type:String,default:''}
+    width:{type:String,default:'50%'}
   },
   setup(props, context) {
     const close = () => {

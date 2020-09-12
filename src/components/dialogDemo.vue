@@ -1,6 +1,6 @@
 <template>
   <div>
-    <wt-button @click="toggle1">点击打开Dialog</wt-button>
+    <wt-button @click="toggle1" theme='text'>点击打开Dialog</wt-button>
     <wt-dialog v-model:visible="dialogVisible1" :closeOnOverlay="false" center>
       <template v-slot:title>标题111111</template>
       <div>11111111111</div>
