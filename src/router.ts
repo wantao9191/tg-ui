@@ -5,7 +5,7 @@ import iconDemo from './components/iconDemo.vue'
 import switchDemo from './components/switchDemo.vue'
 import buttonDemo from './components/buttonDemo.vue'
 import tabsDemo from './components/tabsDemo.vue'
-import dialogDemo from './components/dialogDemo.vue'
+import dialogDemo from './components/dialogDemo/index.vue'
 import docDemo from './components/docDemo.vue'
 const routerHistory = createWebHistory()
 const router = createRouter({

@@ -22,7 +22,7 @@ export default {
         [`tg-theme-${theme}`]: theme,
         [`tg-${size}-button`]: size,
         [`tg-${type}-button`]: type,
-        'tg-round-button': round,
+        "tg-round-button": round,
       };
     });
     return { classes };
@@ -162,6 +162,10 @@ $green: #83d944;
       &:focus {
         color: darken($green, 10%);
       }
+    }
+    &:hover,
+    &:focus {
+      background: none;
     }
   }
   &.tg-theme-button {

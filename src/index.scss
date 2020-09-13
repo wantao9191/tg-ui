@@ -25,5 +25,10 @@
     // 答案见 https://github.com/zenozeng/fonts.css/
     font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   }
+  .language-html {
+    background: rgb(250, 250, 250)!important;
+    margin: 0 !important;
+    padding: 0 24px!important;
+  }
   $primary:#1890ff;
   $danger:#f5222d;
